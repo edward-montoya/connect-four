@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { PLAYERS } from "./useTurnGame";
+import { FieldItem, PLAYERS } from "../@types/game";
 
 
 const MOBILE = 640;
@@ -10,21 +10,16 @@ export let MARGIN = ((window.innerWidth - TABLE_SIZE) / 2);
 let upperLimit = TABLE_SIZE - 20;
 let lowerLimit = 0;
 
-export interface FieldItem {
-    i: number,
-    j: number,
-    value: PLAYERS | null | undefined,
-}
 
 const useFieldGame = (x: number) => {
 
     useEffect(() => {
         const update = () => {
-            TABLE_SIZE = window.innerWidth > MOBILE ? 632 : 335;
-            MARGIN = ((window.innerWidth - TABLE_SIZE) / 2);
-            PATITION = TABLE_SIZE / 6;
-            upperLimit = TABLE_SIZE - 20;
-            lowerLimit = 0;
+          TABLE_SIZE = window.innerWidth > MOBILE ? 632 : 335;
+          PATITION = TABLE_SIZE / 7;
+          MARGIN = ((window.innerWidth - TABLE_SIZE) / 2);
+          upperLimit = TABLE_SIZE - 20;
+          lowerLimit = 0;
         }
         window.addEventListener('resize', update);
         return () => {

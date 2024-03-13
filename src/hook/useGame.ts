@@ -1,9 +1,5 @@
 import { useState } from "react";
-
-export enum PLAYERS {
-    PLAYER_1,
-    PLAYER_2
-}
+import { PLAYERS } from "../@types/game";
 
 const useTurnGame = () => {
     const [currentPlayer, setCurrentPlayer] = useState<PLAYERS>(PLAYERS.PLAYER_1);

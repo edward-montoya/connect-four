@@ -1,0 +1,58 @@
+@use '../../utils/styles';
+
+.rules {
+    width: 80%;
+    display: grid;
+    place-content: center;
+    border-radius: 40px;
+    border: 3px solid black;
+    background: white;
+    box-shadow: 0px 10px 0px 0px #000;
+    padding: 30px 20px;
+    gap: 33px;
+    @extend body_font;
+    position: relative;
+
+    &__title {
+        @extend .heading_lg;
+        text-align: center;
+    }
+    &__subtitle {
+        @extend .heading_sm;
+        color: #7945FF;
+        margin-bottom: 12px;
+    }
+    &__list {
+        list-style: decimal;
+        list-style-position: inside;
+        & li {
+            margin-bottom: 12px;
+        }
+        margin-bottom: 20px;
+    }
+    &__check {
+        border: none;
+        background: none;
+        position: absolute;
+        bottom: -50px;
+        left: 38%;
+
+        outline-offset: -8px;
+    }
+    &::before {
+        position: fixed;
+        content: '';
+        top:0;
+        left:0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #7945FF;
+        z-index: -100;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .rules {
+        max-width: 400px;
+    }
+}
