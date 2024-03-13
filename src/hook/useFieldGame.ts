@@ -25,11 +25,23 @@ const useFieldGame = (x: number) => {
         return () => {
             window.removeEventListener('resize', update);
         }
-    }, [])
+    }, []);
+
+    const generateArray = (n: number, m: number) => {
+      const arr = [];
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          arr.push({
+            i, j, value: null
+          } as FieldItem)
+        }
+      }
+      return arr;
+    };
 
     const m = 7;
     const n = 6;
-    const [field, setField] = useState<Array<Array<number>>>(Array(m).fill(0).map(() => Array(n).fill(null)));
+    const [field, setField] = useState<FieldItem[]>(generateArray(n, m));
 
     const calcColumn = () => {
         const mousePositionCorrected: number = x - MARGIN - 15;
@@ -59,14 +71,13 @@ const useFieldGame = (x: number) => {
         const mousePositionCorrected: number = x - MARGIN - 15;
         if (mousePositionCorrected > lowerLimit && mousePositionCorrected < upperLimit) {
           const column = calcColumn();
-          for (let i = 0 ; i < n ; i++) {
-            if (field[column][i] == null) {
-              const copyArray = [...field];
-              copyArray[column][i] = player;              
+          const copyArray = [...field];
+          const filterData = copyArray.filter((e) => e.i === column && e.value === null).sort((a, b) => a.j - b.j);
+          if (filterData.length && filterData[0].value === null) {
+              filterData[0].value = player;              
               setField(copyArray);
               return;
-            }
-          }
+          } 
           alert('You cannot add a item there.')
         }
         return {} as FieldItem;

@@ -1,5 +1,5 @@
 import './App.scss'
-import Game from './components/Game/Game'
+import Game from './components/Board/Board'
 import Rules from './components/Rules/Rules'
 
 //import MarkerYellow from '@/assets/images/counter-yellow-large.svg';
