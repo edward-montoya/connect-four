@@ -1,6 +1,8 @@
 @use '../../utils/styles';
 
 .poster { 
+    position: absolute;
+    bottom: 60px;
     &__player {
         display: grid;
         place-items: center;

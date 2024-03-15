@@ -58,7 +58,9 @@ const Board = ({currentPlayer, userPlay} : {currentPlayer: PLAYERS, userPlay: ()
             alt=''
           />
         </picture>
-        <div onClick={play} className='board__selector' style={styles}></div>
+        {
+          <div onClick={play} className='board__selector' style={styles}></div>
+        }
         {
           field.map((element) => (
             <Chip key={`element-${element.i}-${element.j}`} element={element} isMobile={isMobile} />
