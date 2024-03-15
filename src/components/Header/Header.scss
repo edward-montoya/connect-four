@@ -1,0 +1,30 @@
+@use '../../utils/styles';
+
+.header {
+    display: grid;
+    grid-auto-flow: column;
+    width: 100%;
+    max-width: 335px;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    &__logo {
+        justify-self: center
+    }
+    &__button {
+        @extend .heading_xs;
+        border: none;
+        border-radius: 20px;
+        background:  #5C2DD5;
+        color: white;
+        padding: 9px;
+    }
+}
+
+@media screen and (min-width: 560px) {
+    .header {
+        display: grid;
+        max-width: 632px;
+        align-items: center;
+        justify-items: center;
+    }
+}

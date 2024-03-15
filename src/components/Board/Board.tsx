@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import useMousePosition from "../../hook/useMousePosition";
 import useFieldGame from "../../hook/useFieldGame";
-import useTurnGame from "../../hook/useGame";
 import { PLAYERS } from "../../@types/game";
 import './Board.scss';
 
@@ -15,7 +14,7 @@ import BoardTopSmall from '@/assets/images/board-layer-white-small.svg';
 import Chip from "../Chip/Chip";
 
 
-const Game = () => {
+const Board = ({currentPlayer, userPlay} : {currentPlayer: PLAYERS, userPlay: () => void}) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
 
   useEffect(() => {
@@ -30,7 +29,6 @@ const Game = () => {
 
   const { x } = useMousePosition();
   const { field, addItemToTheField, userPosition } = useFieldGame(x);
-  const { currentPlayer, userPlay } = useTurnGame();
 
 
   const styles = useMemo(() => {
@@ -48,8 +46,8 @@ const Game = () => {
   }
   
   return (
-    <section className='game'>
-      <div className='game__board'>
+    <section className='board'>
+      <div className='board__container'>
         <picture style={{ position: 'absolute', top: 0 }}>
           <source
             media="(min-width: 560px)"
@@ -60,7 +58,7 @@ const Game = () => {
             alt=''
           />
         </picture>
-        <div onClick={play} className='game__selector' style={styles}></div>
+        <div onClick={play} className='board__selector' style={styles}></div>
         {
           field.map((element) => (
             <Chip key={`element-${element.i}-${element.j}`} element={element} isMobile={isMobile} />
@@ -82,4 +80,4 @@ const Game = () => {
   )
 }
 
-export default Game;
+export default Board;

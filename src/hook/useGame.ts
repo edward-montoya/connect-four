@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PLAYERS } from "../@types/game";
 
-const useTurnGame = () => {
+const useGame = () => {
     const [currentPlayer, setCurrentPlayer] = useState<PLAYERS>(PLAYERS.PLAYER_1);
 
     const userPlay = () => {
@@ -13,8 +13,8 @@ const useTurnGame = () => {
         }
     }
     return {
-        currentPlayer, userPlay
+        currentPlayer, userPlay, winner: '', timer: 0
     }
 };
 
-export default useTurnGame;
+export default useGame;

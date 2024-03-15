@@ -1,12 +1,9 @@
 import './App.scss'
-import Game from './components/Board/Board'
-import Rules from './components/Rules/Rules'
+import Game from './pages/Game/Game'
 
 //import MarkerYellow from '@/assets/images/counter-yellow-large.svg';
 
 function App() {
-
-
 
   return (
     <main>

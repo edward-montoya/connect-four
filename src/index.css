@@ -5,6 +5,13 @@
         url('@/assets/fonts/static/SpaceGrotesk-Medium.ttf') format('truetype');
 }
 
+:root {
+    --primary-color: black;
+    --secondary-color: white;
+    --primary-background: #7945FF;
+    --secondary-background: #5C2DD5;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0-modified | 20110126
    License: none (public domain)

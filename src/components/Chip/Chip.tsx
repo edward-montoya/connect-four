@@ -25,7 +25,7 @@ const Chip = ({element, isMobile}: {element: FieldItem, isMobile: boolean}) => {
       backgroundRepeat: 'no-repeat',
       width: isMobile ? '41px' : '70px',
       height: isMobile ? '46px' : '75px',
-      transition: `transform ${2000 - (285 * element.j)}ms ease-in`,
+      transition: `transform ${1000 - (166 * element.j)}ms ease-in`,
       transform: `translateX(${tranformX}px)`
     } as React.CSSProperties;
     if (element.value !== null) {
@@ -41,7 +41,7 @@ const Chip = ({element, isMobile}: {element: FieldItem, isMobile: boolean}) => {
 
     return (
         <div 
-            className='game__chip'
+            className='board__chip'
             style={buildStyle(element)} />
     );
 }
