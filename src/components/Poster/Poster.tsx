@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import { PLAYERS } from "../../@types/game";
 
-import TurnBackgroundRed from '@/assets/images/turn-background-red.svg';
-import TurnBackgroundYellow from '@/assets/images/turn-background-yellow.svg';
+import TurnBackgroundRed from '/assets/images/turn-background-red.svg';
+import TurnBackgroundYellow from '/assets/images/turn-background-yellow.svg';
 
 import './Poster.scss';
 

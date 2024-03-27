@@ -4,8 +4,8 @@ import Board from "../../components/Board/Board";
 import Player from "../../components/Player/Player";
 import Poster from "../../components/Poster/Poster";
 import './Game.scss';
-import PlayerOne from '../../assets/images/player-one.svg';
-import PlayerTwo from '../../assets/images/player-two.svg'
+import PlayerOne from '/assets/images/player-one.svg';
+import PlayerTwo from '/assets/images/player-two.svg'
 import useMousePosition from "../../hook/useMousePosition";
 import useFieldGame from "../../hook/useFieldGame";
 import useScreenSize from "../../hook/useScreenSize";

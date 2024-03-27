@@ -1,7 +1,7 @@
-import CounterRed from '@/assets/images/counter-red-large.svg';
-import CounterYellow from '@/assets/images/counter-yellow-large.svg';
-import CounterRedSmall from '@/assets/images/counter-red-small.svg';
-import CounterYellowSmall from '@/assets/images/counter-yellow-small.svg';
+import CounterRed from '/assets/images/counter-red-large.svg';
+import CounterYellow from '/assets/images/counter-yellow-large.svg';
+import CounterRedSmall from '/assets/images/counter-red-small.svg';
+import CounterYellowSmall from '/assets/images/counter-yellow-small.svg';
 import { FieldItem, PLAYERS } from '../../@types/game';
 import { useCallback } from 'react';
 

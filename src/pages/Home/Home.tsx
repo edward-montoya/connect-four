@@ -1,7 +1,7 @@
 import './Home.scss'
 
-import Logo from '@/assets/images/logo.svg';
-import IconPlayerVsPlayer from '@/assets/images/player-vs-player.svg';
+import Logo from '/assets/images/logo.svg';
+import IconPlayerVsPlayer from '/assets/images/player-vs-player.svg';
 import { Link } from 'react-router-dom';
 
 const Home = () => {

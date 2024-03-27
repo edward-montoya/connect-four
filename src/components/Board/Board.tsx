@@ -2,13 +2,13 @@ import { useMemo } from "react";
 import { FieldItem, PLAYERS } from "../../@types/game";
 import './Board.scss';
 
-import MarkerRed from '@/assets/images/marker-red.svg';
-import MarkerYellow from '@/assets/images/marker-yellow.svg';
+import MarkerRed from '/assets/images/marker-red.svg';
+import MarkerYellow from '/assets/images/marker-yellow.svg';
 
-import BoardBottomLarge from '@/assets/images/board-layer-black-large.svg';
-import BoardTopLarge from '@/assets/images/board-layer-white-large.svg';
-import BoardBottomSmall from '@/assets/images/board-layer-black-small.svg';
-import BoardTopSmall from '@/assets/images/board-layer-white-small.svg';
+import BoardBottomLarge from '/assets/images/board-layer-black-large.svg';
+import BoardTopLarge from '/assets/images/board-layer-white-large.svg';
+import BoardBottomSmall from '/assets/images/board-layer-black-small.svg';
+import BoardTopSmall from '/assets/images/board-layer-white-small.svg';
 import Chip from "../Chip/Chip";
 
 const Board = ({ currentPlayer, userPlay,

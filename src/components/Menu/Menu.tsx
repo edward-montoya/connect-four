@@ -1,6 +1,6 @@
 import './Menu.scss';
-import Logo from '@/assets/images/logo.svg';
-import PlayerVsPlayer from '@/assets/images/player-vs-player.svg';
+import Logo from '/assets/images/logo.svg';
+import PlayerVsPlayer from '/assets/images/player-vs-player.svg';
 
 
 const Menu = () => {

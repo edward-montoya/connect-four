@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import './Header.scss';
-import Logo from '@/assets/images/logo.svg';
+import Logo from '/assets/images/logo.svg';
 
 const Header = ({ restart, pauseGame, continueGame, quitGame } : { restart: () => void, pauseGame: () => void, continueGame: () => void, quitGame: () => void }) => {
     const [modalOpen, setModalOpen] = useState(false);

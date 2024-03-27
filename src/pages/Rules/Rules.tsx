@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Rules.scss';
-import IconCheck from '@/assets/images/icon-check.svg';
+import IconCheck from '/assets/images/icon-check.svg';
 
 const Rules = () => {
     return (
