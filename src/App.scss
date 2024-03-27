@@ -42,8 +42,7 @@ main.playing {
 
 button {
   &:focus {
-    outline: 4px solid var(--secondary-background);
-    border-radius: 50%; 
+    outline: 4px solid white;
     cursor: pointer;
   }
 }

@@ -1,11 +1,24 @@
-import { useState } from "react";
-import { PLAYERS } from "../@types/game";
+import { useEffect, useState } from "react";
+import { PLAYERS, PlayerInformation } from "../@types/game";
+import useInterval from "./useInterval";
+
+const basePlayerInfo = [{
+    player: PLAYERS.PLAYER_1,
+    score: 0,
+},
+{
+    player: PLAYERS.PLAYER_2,
+    score: 0,
+}];
 
 const useGame = () => {
     const [currentPlayer, setCurrentPlayer] = useState<PLAYERS>(PLAYERS.PLAYER_1);
     const [timer, setTime] = useState(30);
+    const [pause, setPause] = useState(false);
+    const [playerInfo, setPlayerInfo] = useState<PlayerInformation[]>(basePlayerInfo);
 
     const userPlay = () => {
+        setTime(30);
         if (currentPlayer === PLAYERS.PLAYER_1) {
             setCurrentPlayer(PLAYERS.PLAYER_2);
         }
@@ -14,18 +27,43 @@ const useGame = () => {
         }
     }
 
-    const startTimer  = () => {
-        setInterval(() => {
+    useInterval(() => {
+        if (!pause) {
             setTime((prev) => prev - 1);
-            if (timer === 0) {
-                setTime(30);
-                userPlay();
-            }
-        })
+        }
+    }, 1000);
+
+    useEffect(() => {
+        if (timer === 0) {
+            userPlay();
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [timer]);
+
+    const pauseTimer = () => {
+        setPause(true);
+    }
+
+    const continueTimer = () => {
+        setPause(false);
+    }
+
+    const setWinner = (winner: PLAYERS) => {
+        const copyPlayers = [...playerInfo]
+        copyPlayers[winner].score += 1;
+        setPlayerInfo(copyPlayers);
+    }
+
+    const restart = () => {
+        setCurrentPlayer(PLAYERS.PLAYER_1);
+        setPause(false);
+        setTime(30);
+        setPlayerInfo(basePlayerInfo);
     }
 
     return {
-        currentPlayer, userPlay, winner: '', timer, startTimer
+        currentPlayer, userPlay, winner: '', timer, pauseTimer,
+        continueTimer, setWinner, restart
     }
 };
 

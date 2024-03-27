@@ -12,14 +12,19 @@ import useScreenSize from "../../hook/useScreenSize";
 
 const Game = () => {
 
-    const { currentPlayer, userPlay, timer } = useGame();
+    const { currentPlayer, userPlay, timer, restart: restartGame, continueTimer, pauseTimer } = useGame();
     const { margin, partition, lowerLimit, upperLimit, isMobile } = useScreenSize();
     const { getColumnByMousePosition, userPosition } = useMousePosition(margin, partition, upperLimit, lowerLimit);
-    const { field, addItemToTheField } = useFieldGame();
+    const { field, addItemToTheField, restart: restartField } = useFieldGame();
+
+    const restart = () => {
+        restartGame();
+        restartField();
+    };
 
     return (
         <div className="game">
-            <Header />
+            <Header pauseGame={pauseTimer} continueGame={continueTimer} restart={restart} />
             <div className="game__container">
                 <div className="game__player-1">
                     <Player imagePosition="left" playerImage={PlayerOne} playerName="PLAYER 1" score={0} />

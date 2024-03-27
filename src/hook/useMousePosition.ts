@@ -5,7 +5,7 @@ export interface IMousePosition {
     y: number,
 }
 
-const MOUSE_CORRECTION = 275;
+const MOUSE_CORRECTION = 20;
 
 const useMousePosition = (margin: number, partition: number, upperLimit: number, lowerLimit: number = 0) => {
     
@@ -47,7 +47,7 @@ const useMousePosition = (margin: number, partition: number, upperLimit: number,
 
       const userPosition = useMemo(() => {
         if (mousePosition.x) {
-            const mousePositionCorrected: number = mousePosition.x - margin - MOUSE_CORRECTION;
+          const mousePositionCorrected: number = mousePosition.x - margin - MOUSE_CORRECTION;
             let position;
             if (mousePositionCorrected < upperLimit && mousePositionCorrected > lowerLimit) {
                 position = mousePositionCorrected;

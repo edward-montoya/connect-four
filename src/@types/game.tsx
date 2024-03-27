@@ -10,6 +10,6 @@ export enum PLAYERS {
 }
 
 export interface PlayerInformation {
+    player: PLAYERS
     score: number,
-    winner: boolean,
 }

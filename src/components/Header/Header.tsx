@@ -1,12 +1,43 @@
+import { useState } from 'react';
+import Modal from '../Modal/Modal';
 import './Header.scss';
 import Logo from '@/assets/images/logo.svg';
 
-const Header = () => {
+const Header = ({ restart, pauseGame, continueGame } : { restart: () => void, pauseGame: () => void, continueGame: () => void }) => {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const menuOption = () => {
+        pauseGame();
+        setModalOpen(true);
+    };
+
+    const continueHeader = () => {
+        continueGame();
+        setModalOpen(false);
+    }
+
+    const restartOption = () => {
+        restart();
+        setModalOpen(false);
+    }
+
     return (
         <header className="header">
-            <button className="header__button">MENU</button>
+            <button onClick={menuOption} className="header__button">MENU</button>
+            {
+                modalOpen ? (
+                    <Modal title='PAUSE'>
+                        <div className='header__modal-content'>
+                            <button onClick={continueHeader} className='header__modal-button' >CONTINUE GAME</button>
+                            <button className='header__modal-button' onClick={restartOption} >RESTART</button>
+                            <button className='header__modal-button--quit' onClick={restart} >QUIT GAME</button>
+                        </div>
+                    </Modal>
+                ) :
+                    <></>
+            }
             <img className='header__logo' src={Logo} alt="app logo" />
-            <button className="header__button">RESTART</button>
+            <button onClick={restart} className="header__button">RESTART</button>
         </header>
     );
 }

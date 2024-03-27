@@ -1,8 +1,6 @@
 import './App.scss'
 import Game from './pages/Game/Game'
 
-//import MarkerYellow from '@/assets/images/counter-yellow-large.svg';
-
 function App() {
 
   return (

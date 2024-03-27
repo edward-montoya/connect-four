@@ -31,7 +31,11 @@ const useFieldGame = () => {
         return {} as FieldItem;
       }
 
-      return { field, addItemToTheField};
+      const restart = () => {
+        setField(generateArray(n, m));
+      }
+
+      return { field, addItemToTheField, restart};
 };
 
 export default useFieldGame;
