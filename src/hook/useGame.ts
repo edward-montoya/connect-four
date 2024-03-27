@@ -12,10 +12,11 @@ const basePlayerInfo = [{
 }];
 
 const useGame = () => {
+    const [initialPlayer, setInitialPlayer] = useState<PLAYERS>(PLAYERS.PLAYER_1);
     const [currentPlayer, setCurrentPlayer] = useState<PLAYERS>(PLAYERS.PLAYER_1);
     const [timer, setTime] = useState(30);
     const [pause, setPause] = useState(false);
-    const [playerInfo, setPlayerInfo] = useState<PlayerInformation[]>(basePlayerInfo);
+    const [playerInfo, setPlayerInfo] = useState<PlayerInformation[]>([...basePlayerInfo]);
 
     const userPlay = () => {
         setTime(30);
@@ -48,8 +49,12 @@ const useGame = () => {
         setPause(false);
     }
 
-    const setWinner = (winner: PLAYERS) => {
-        const copyPlayers = [...playerInfo]
+    const setWinner = (winner: PLAYERS | undefined | null) => {
+        if (winner === null || winner === undefined) {
+            return;
+        }
+        pauseTimer();
+        const copyPlayers = [...playerInfo];
         copyPlayers[winner].score += 1;
         setPlayerInfo(copyPlayers);
     }
@@ -57,13 +62,21 @@ const useGame = () => {
     const restart = () => {
         setCurrentPlayer(PLAYERS.PLAYER_1);
         setPause(false);
+        setTime(30);        
+        setPlayerInfo([...basePlayerInfo]);
+    }
+
+    const playAgain = () => {
+        const newInitial = (initialPlayer === PLAYERS.PLAYER_1) ? PLAYERS.PLAYER_2 : PLAYERS.PLAYER_1;
+        setInitialPlayer(newInitial);
+        setCurrentPlayer(newInitial);
+        setPause(false);
         setTime(30);
-        setPlayerInfo(basePlayerInfo);
     }
 
     return {
-        currentPlayer, userPlay, winner: '', timer, pauseTimer,
-        continueTimer, setWinner, restart
+        currentPlayer, userPlay, winner: '', timer, pauseTimer, pause,
+        continueTimer, setWinner, restart, playAgain, playerInfo
     }
 };
 

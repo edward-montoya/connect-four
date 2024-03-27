@@ -12,9 +12,9 @@ import BoardTopSmall from '@/assets/images/board-layer-white-small.svg';
 import Chip from "../Chip/Chip";
 
 const Board = ({ currentPlayer, userPlay,
-  field, addItemToTheField, isMobile, userPosition, getColumn }: { currentPlayer: PLAYERS,
+  field, addItemToTheField, isMobile, userPosition, getColumn, pause }: { currentPlayer: PLAYERS,
      userPlay: () => void, field: FieldItem[], 
-     addItemToTheField: (currentPlayer: PLAYERS, column: number) => void, userPosition?: number | undefined, isMobile: boolean, getColumn?: () => number }) => {
+     addItemToTheField: (currentPlayer: PLAYERS, column: number) => void, userPosition?: number | undefined, isMobile: boolean, getColumn?: () => number, pause: boolean }) => {
 
   const styles = useMemo(() => {
     return {
@@ -26,9 +26,11 @@ const Board = ({ currentPlayer, userPlay,
   }, [userPosition, currentPlayer]);
 
   const play = (column?: number) => {
-    const desktopColumn = userPosition && !isMobile && getColumn && getColumn() || column || 0;
-    addItemToTheField(currentPlayer, desktopColumn);
-    userPlay();
+    if (!pause) {
+      const desktopColumn = userPosition && !isMobile && getColumn && getColumn() || column || 0;
+      addItemToTheField(currentPlayer, desktopColumn);
+      userPlay();
+    }
   }
 
   return (
@@ -45,7 +47,7 @@ const Board = ({ currentPlayer, userPlay,
           />
         </picture>
         {
-          <div onClick={() => play()} className='board__selector' style={styles}></div>
+          !pause ? <div onClick={() => play()} className='board__selector' style={styles}></div> : <></>
         }
         {
           field.map((element) => (

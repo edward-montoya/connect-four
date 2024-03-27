@@ -3,7 +3,7 @@ import Modal from '../Modal/Modal';
 import './Header.scss';
 import Logo from '@/assets/images/logo.svg';
 
-const Header = ({ restart, pauseGame, continueGame } : { restart: () => void, pauseGame: () => void, continueGame: () => void }) => {
+const Header = ({ restart, pauseGame, continueGame, quitGame } : { restart: () => void, pauseGame: () => void, continueGame: () => void, quitGame: () => void }) => {
     const [modalOpen, setModalOpen] = useState(false);
 
     const menuOption = () => {
@@ -30,7 +30,7 @@ const Header = ({ restart, pauseGame, continueGame } : { restart: () => void, pa
                         <div className='header__modal-content'>
                             <button onClick={continueHeader} className='header__modal-button' >CONTINUE GAME</button>
                             <button className='header__modal-button' onClick={restartOption} >RESTART</button>
-                            <button className='header__modal-button--quit' onClick={restart} >QUIT GAME</button>
+                            <button className='header__modal-button--quit' onClick={quitGame}>QUIT GAME</button>
                         </div>
                     </Modal>
                 ) :

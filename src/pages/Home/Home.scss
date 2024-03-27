@@ -1,0 +1,56 @@
+@use '../../utils/styles';
+
+.home {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #7945FF;
+    &__container {
+        width: 80%;
+        display: grid;
+        padding: 60px 40px;
+        gap: 33px;
+    }
+
+    &__button {
+        @extend .heading_md;
+        text-decoration: none;
+        max-height: 72px;
+        text-align: center;
+        padding-top: 21px;
+        padding-bottom: 21px;
+        padding-inline: 20px;
+        border-radius: 20px;
+        border: 3px solid var(--Black, #000);
+        background: var(--White, #FFF);
+        box-shadow: 0px 10px 0px 0px #000;
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+        &:hover {
+            border: 3px solid var(--Dark-Purple, #5C2DD5);
+            box-shadow: 0px 10px 0px 0px #5C2DD5;
+        }
+    }
+    &__logo {
+        justify-self: center;
+        margin-top: 40px;
+        margin-bottom: 79px;
+    }
+}
+
+@media screen and (min-width: 560px) {
+    .home {
+        background-color: #5C2DD5;
+        &__container {
+            border-radius: 40px;
+            border: 3px solid  #000;
+            background: #7945FF;
+            box-shadow: 0px 10px 0px 0px #000;
+            max-width: 480px;
+        }
+    }
+}

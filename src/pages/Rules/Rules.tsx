@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Rules.scss';
 import IconCheck from '@/assets/images/icon-check.svg';
 
@@ -18,9 +19,9 @@ const Rules = () => {
                     <li>The starter of the previous game goes second on the next game.</li>
                 </ol>
             </article>
-            <button className='rules__check'>
+            <Link className='rules__check' to="/">
                 <img src={IconCheck} alt='check image' />
-            </button>
+            </Link>
         </section>
     )
 }
